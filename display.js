@@ -1,3 +1,6 @@
+// Display controller
+
+
 var display = (function () {
   //var issCoords = nasaAPI.getISSCoords();
 
@@ -6,7 +9,7 @@ var display = (function () {
           atmosphere: true,
           dragging: true,
           tilting: true,
-          zooming: false,
+          zooming: true,
           center: [46.8011, 8.2266],
           zoom: 2
   };
@@ -21,11 +24,15 @@ var display = (function () {
     minZoom: 0,
     maxZoom: 16,
     attribution: 'WebGLEarth example',
-    tms: true
+    tms: true,
   }).addTo(earth);
 
   // Add marker
-  var marker = WE.marker([200, 10], "./assets/satellite-station.svg", 60, 60).addTo(earth)
+  var marker = WE.marker(
+    [47.49, 19.04],
+    "./assets/satellite-station.svg",
+    60, 60)
+    .addTo(earth)
   marker.bindPopup('<b>ISS marker position.</b>');
 
   var setMarkerPosition = function (IssPos) {
