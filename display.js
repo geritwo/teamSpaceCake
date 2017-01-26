@@ -28,32 +28,28 @@ var display = (function () {
   }).addTo(earth);
 
   // Add marker
-  var setupISSmarker = function (posObj) {
-    var posArr = [];
-    posArr[0] = posObj.iss_position.latitude;
-    posArr[1] = posObj.iss_position.longitude;
-    var marker = WE.marker(
-      posArr,
-      "./assets/satellite-station.svg",
-      60, 60)
-      .addTo(earth);
-    marker.bindPopup('<b>ISS marker position.</b>');
-    return marker;
-  };
+  var ISSMarker = WE.marker(
+    [0, 0],
+    "./assets/satellite-station.svg",
+    60, 60)
+    .addTo(earth);
 
   var setMarkerPosition = function (IssPos) {
     var arrOfPosition = [];
     arrOfPosition[0] = IssPos.iss_position.latitude;
     arrOfPosition[1] = IssPos.iss_position.longitude;
-    marker.setLatLng(arrOfPosition);
+    ISSMarker.setLatLng(arrOfPosition);
     earth.setView(arrOfPosition, 2);
-    console.log(arrOfPosition);
+    ISSMarker.bindPopup('<b>ISS marker position.</b><br>latitude: '+ arrOfPosition[0] +
+     ', longitude: ' +   arrOfPosition[1]);
   };
 
+  var options = {color: '#ff0', opacity: 1, fillColor: '#f00', fillOpacity: 0.1, weight: 2};
+  var polygonB = WE.polygon([[50, 3], [51, 2.5]], options).addTo(earth);
+
   return {
-    setupISSmarker: setupISSmarker,
     earth : earth,
-    marker: marker,
+    ISSMarker: ISSMarker,
     setMarker: setMarkerPosition,
   }
 })();
