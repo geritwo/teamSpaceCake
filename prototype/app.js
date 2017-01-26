@@ -59,7 +59,7 @@ var display = (function () {
   }).addTo(earth);
 
   // Add marker
-  var marker = WE.marker([200, 10], "./satellite-station.svg", 60, 60).addTo(earth)
+  var marker = WE.marker([47.49, 19.04], "./satellite-station.svg", 60, 60).addTo(earth)
   marker.bindPopup('<b>ISS is currently here!</b>');
 
   return {
