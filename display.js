@@ -28,12 +28,14 @@ var display = (function () {
   }).addTo(earth);
 
   // Add marker
-  var marker = WE.marker(
-    [47.49, 19.04],
-    "./assets/satellite-station.svg",
-    60, 60)
-    .addTo(earth)
-  marker.bindPopup('<b>ISS marker position.</b>');
+  var setupISSmarker = function (posArr) {
+    var marker = WE.marker(
+      posArr,
+      "./assets/satellite-station.svg",
+      60, 60)
+      .addTo(earth);
+    marker.bindPopup('<b>ISS marker position.</b>');
+  };
 
   var setMarkerPosition = function (IssPos) {
     var arrOfPosition = [];
@@ -44,9 +46,17 @@ var display = (function () {
     console.log(arrOfPosition);
   };
 
+  var getPosArr = function (IssPos) {
+    var arrOfPosition = [];
+    arrOfPosition[0] = IssPos.iss_position.latitude;
+    arrOfPosition[1] = IssPos.iss_position.longitude;
+    return arrOfPosition;
+  };
+
   return {
-    marker: marker,
+    setupISSmarker: setupISSmarker,
     earth : earth,
-    setMarker: setMarkerPosition
+    setMarker: setMarkerPosition,
+    getPosArr: getPosArr,
   }
 })();
