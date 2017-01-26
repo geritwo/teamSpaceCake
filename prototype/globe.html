@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script src="http://www.webglearth.com/v2/api.js"></script>
+<script>
+      function initialize() {
+        var earth = new WE.map('earth_div');
+        var options = {atmosphere:true};
+        earth.setView([46.8011, 8.2266], 2);
+        WE.tileLayer('http://data.webglearth.com/natural-earth-color/{z}/{x}/{y}.jpg', {
+          tileSize: 256,
+          bounds: [[-85, -180], [85, 180]],
+          minZoom: 0,
+          maxZoom: 16,
+          attribution: 'WebGLEarth example',
+          tms: true
+        }).addTo(earth);
+
+        // Add marker
+        var marker = WE.marker([51.5, -0.1], "./satellite-station.svg", 60, 60).addTo(earth)
+        marker.bindPopup('<b>ISS is currently here!</b>');
+        marker.addto(earth);
+      }
+    </script>
+</head>
+<body onload="initialize()">
+  <h1>ISS Position</h1>
+  <div id="earth_div" style="width:600px;height:400px;background:black;border:1px solid gray; padding:2px;"></div>
+  <button>Update position</button>
+  <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+</body>
+</html>
