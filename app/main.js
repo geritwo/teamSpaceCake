@@ -3,7 +3,7 @@
 console.log('Controller initiated.');
 
 // Init ISS marker, get position, set Earth view
-ajax.open('GET', 'http://api.open-notify.org/iss-now.json/', '', updateISSInfo);
+ajax.open('GET', 'https://api.open-notify.org/iss-now.json/', '', updateISSInfo);
 display.earth.setView([display.ISSMarker.W, display.ISSMarker.X]);
 
 // Handle Button presses
@@ -12,7 +12,7 @@ document.querySelector('#path').addEventListener('click', function () {
 });
 
 document.querySelector('#position').addEventListener('click', function () {
-  ajax.open('GET', 'http://api.open-notify.org/iss-now.json/', '', updateISSInfo);
+  ajax.open('GET', 'https://api.open-notify.org/iss-now.json/', '', updateISSInfo);
 });
 
 // Update ISS info
