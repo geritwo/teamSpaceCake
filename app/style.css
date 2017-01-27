@@ -73,11 +73,9 @@ p.iss-is-above {
 .active {
   border: 2px solid orange;
 }
-/*
-Titles:
-font-family: 'Bungee Shade', cursive;
-Text:
-font-family: 'Russo One', sans-serif;
-Counters:
-font-family: 'Orbitron', sans-serif;
-*/
+
+#clock {
+  color: white;
+  font-family: monospace;
+  font-size: 16px;
+}

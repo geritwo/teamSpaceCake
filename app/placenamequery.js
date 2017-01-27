@@ -15,5 +15,3 @@ function setPlaceName (data) {
   }
   display.renderPlaceName();
 };
-
-// callback: display.setPlaceName

@@ -1,6 +1,8 @@
 // Main functions
 
 console.log('Controller initiated.');
+
+display.dateTime();
 // Init ISS marker, get position, set Earth view
 ajax.open('GET', 'http://api.open-notify.org/iss-now.json/', '', updateISSInfo);
 ajax.open('GET', 'http://api.open-notify.org/iss-now.json/', '', updateISSInfo);
@@ -28,20 +30,8 @@ function updateISSInfo(issPos) {
 // Auto update position
 function autoUpdate() {
   if (!document.querySelector('#auto').className) {
-    var flag = 0;
     window.timer = setInterval(function(){
-      if (flag === 0 || display.positions.length < 2) {
-        ajax.open('GET', 'http://api.open-notify.org/iss-now.json/', '', updateISSInfo, false);
-        flag = 1;
-      } else {
-        var len = display.positions.length;
-        var calcPosLat = (2 * display.positions[len-1][0] - display.positions[len-2][0]).toFixed(3);
-        var calcPosLon = (2 * display.positions[len-1][1] - display.positions[len-2][1]).toFixed(3);
-        display.setMarker(calcPosLat, calcPosLon);
-        reqPlaceName(calcPosLat, calcPosLon);
-        flag = 0;
-      }
-    }, 5000);
+      ajax.open('GET', 'http://api.open-notify.org/iss-now.json/', '', updateISSInfo, false);}, 10000);
     document.querySelector('#auto').classList.toggle('active');
   } else {
     clearInterval(window.timer);
