@@ -9,14 +9,12 @@ function reqPlaceName(lat, lon) {
 };
 
 function setPlaceName (data) {
-  console.log('Full object: ' + data);
-  console.log('Current place name: ' + data.display_name);
   if (!data.display_name) {
     placeName = "international waters"
   } else {
     placeName = data.display_name;
   }
-  console.log('Place name set: ' + placeName);
+  display.renderPlaceName();
 };
 
 // callback: display.setPlaceName
