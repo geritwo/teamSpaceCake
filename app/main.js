@@ -27,11 +27,9 @@ function updateISSInfo(issPos) {
 
 // Auto update position
 function autoUpdate() {
-  var timer;
-  console.log(!document.querySelector('#auto').className);
   if (!document.querySelector('#auto').className) {
     var flag = 0;
-    timer = setInterval(function(){
+    window.timer = setInterval(function(){
       if (flag === 0 || display.positions.length < 2) {
         ajax.open('GET', 'http://api.open-notify.org/iss-now.json/', '', updateISSInfo, false);
         flag = 1;
@@ -41,14 +39,12 @@ function autoUpdate() {
         var calcPosLon = (2 * display.positions[len-1][1] - display.positions[len-2][1]).toFixed(3);
         display.setMarker(calcPosLat, calcPosLon);
         reqPlaceName(calcPosLat, calcPosLon);
-        display.positions.push([calcPosLat, calcPosLon]);
         flag = 0;
       }
     }, 5000);
     document.querySelector('#auto').classList.toggle('active');
   } else {
-    console.log('jajj');
-    clearInterval(timer);
+    clearInterval(window.timer);
     document.querySelector('#auto').classList.toggle('active');
   }
 }
