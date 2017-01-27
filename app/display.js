@@ -31,7 +31,7 @@ var display = (function () {
   // Instantiate marker
   var ISSMarker = WE.marker(
     [0, 0],
-    "./assets/satellite-station.svg",
+    "./assets/ISS_01b.svg",
     60, 60)
     .addTo(earth);
 
