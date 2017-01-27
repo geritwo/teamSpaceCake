@@ -48,12 +48,15 @@ var display = (function () {
     if (positions.length > 1) {
       for (var i = 0, l = positions.length - 1; i < l; i++) {
         var options = {color: '#f00', opacity: 1, fillColor: '#f00', fillOpacity: 1, weight: 2};
-        console.log(positions[i+1]);
         // console.log(positions[i+1]);
         var polygonB = WE.polygon([positions[i], positions[i+1], [positions[i+1][0]+1, positions[i+1][1]+1], [positions[i][0]+1, positions[i][1]+1]], options).addTo(earth);
       }
     }
   };
+
+  // var deletePath = function () {
+  //   delete.earth.
+  // }
 
   var renderPlaceName = function () {
     var target = document.querySelector('.iss_is_above');

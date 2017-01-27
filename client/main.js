@@ -14,6 +14,11 @@ document.querySelector('#position').addEventListener('click', function () {
   ajax.open('GET', 'http://api.open-notify.org/iss-now.json/', '', updateISSInfo);
 });
 
+document.querySelector('#deletePath').addEventListener('click', function () {
+  display.deletePath();
+});
+
+
 function updateISSInfo(issPos) {
   var lat = issPos.iss_position.latitude;
   var lon = issPos.iss_position.longitude;
