@@ -3,6 +3,7 @@
 
 var display = (function () {
   //var issCoords = nasaAPI.getISSCoords();
+  var positions = [];
 
   var options = {
           sky: true,
@@ -39,17 +40,28 @@ var display = (function () {
     arrOfPosition[0] = IssPos.iss_position.latitude;
     arrOfPosition[1] = IssPos.iss_position.longitude;
     ISSMarker.setLatLng(arrOfPosition);
-    earth.setView(arrOfPosition, 2);
+    earth.setView(arrOfPosition);
     ISSMarker.bindPopup('<b>ISS marker position.</b><br>latitude: '+ arrOfPosition[0] +
      ', longitude: ' +   arrOfPosition[1]);
+    positions.push(arrOfPosition);
   };
 
-  var options = {color: '#ff0', opacity: 1, fillColor: '#f00', fillOpacity: 0.1, weight: 2};
-  var polygonB = WE.polygon([[50, 3], [51, 2.5]], options).addTo(earth);
+  var showPath = function () {
+    if (positions.length > 1) {
+      for (var i = 0, l = positions.length - 1; i < l; i++) {
+        var options = {color: '#f00', opacity: 1, fillColor: '#f00', fillOpacity: 1, weight: 2};
+        console.log(positions[i+1]);
+        // console.log(positions[i+1]);
+        var polygonB = WE.polygon([positions[i], positions[i+1], [positions[i+1][0]+1, positions[i+1][1]+1], [positions[i][0]+1, positions[i][1]+1]], options).addTo(earth);
+      }
+    }
+  };
+
 
   return {
     earth : earth,
     ISSMarker: ISSMarker,
     setMarker: setMarkerPosition,
+    showPath: showPath
   }
 })();
