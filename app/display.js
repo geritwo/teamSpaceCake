@@ -1,6 +1,5 @@
 // Display controller
 
-
 var display = (function () {
   //var issCoords = nasaAPI.getISSCoords();
   var positions = [];
@@ -39,8 +38,8 @@ var display = (function () {
     var arrOfPosition = [lat, lon]; // Because built-in method needs an array.
     ISSMarker.setLatLng(arrOfPosition);
     // earth.setView(arrOfPosition);
-    ISSMarker.bindPopup('<b>ISS marker position.</b><br>latitude: '+ arrOfPosition[0] +
-     ', longitude: ' +   arrOfPosition[1]);
+    ISSMarker.bindPopup('<h3>Live camera feed from the ISS:</h3><iframe width="300" height="169" src="https://www.youtube.com/embed/SF7FUU7CThs" frameborder="0" allowfullscreen></iframe>');
+    // ISSMarker.bindPopup('<b>ISS marker position.</b><br>latitude: '+ arrOfPosition[0] + ', longitude: ' +   arrOfPosition[1]);
     positions.push(arrOfPosition);
   };
 
