@@ -35,10 +35,8 @@ var display = (function () {
     60, 60)
     .addTo(earth);
 
-  var setMarkerPosition = function (IssPos) {
-    var arrOfPosition = [];
-    arrOfPosition[0] = IssPos.iss_position.latitude;
-    arrOfPosition[1] = IssPos.iss_position.longitude;
+  var setMarkerPosition = function (lat, lon) {
+    var arrOfPosition = [lat, lon];
     ISSMarker.setLatLng(arrOfPosition);
     earth.setView(arrOfPosition);
     ISSMarker.bindPopup('<b>ISS marker position.</b><br>latitude: '+ arrOfPosition[0] +
@@ -57,11 +55,16 @@ var display = (function () {
     }
   };
 
+  var renderPlaceName = function () {
+    var target = document.querySelector('.iss_is_above');
+    target.innerHTML = "The ISS is currently above " + placeName + ".";
+  }
 
   return {
     earth : earth,
     ISSMarker: ISSMarker,
     setMarker: setMarkerPosition,
-    showPath: showPath
+    showPath: showPath,
+    renderPlaceName : renderPlaceName,
   }
 })();
