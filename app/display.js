@@ -3,6 +3,7 @@
 var display = (function () {
   //var issCoords = nasaAPI.getISSCoords();
   var positions = [];
+  var pathIndex = 0;
 
   var options = {
           sky: true,
@@ -49,11 +50,12 @@ var display = (function () {
 
   var showPath = function () {
     if (positions.length > 1) {
-      for (var i = 0, l = positions.length - 1; i < l; i++) {
+      for (var i = pathIndex, l = positions.length - 1; i < l; i++) {
         var options = {color: '#f00', opacity: 1, fillColor: '#f00', fillOpacity: 1, weight: 2};
         // console.log(positions[i+1]);
         var polygonB = WE.polygon([positions[i], positions[i+1], [positions[i+1][0]+1, positions[i+1][1]+1], [positions[i][0]+1, positions[i][1]+1]], options).addTo(earth);
       }
+      pathIndex = positions.length - 1;
     }
   };
 
@@ -81,7 +83,7 @@ var display = (function () {
                   s = "0"+s;
           }
           result = ''+days[day]+' '+months[month]+' '+d+' '+year+' '+h+':'+m+':'+s;
-          document.getElementById(id).innerHTML = result;
+          document.getElementById('clock').innerHTML = result;
           setTimeout('date_time("'+id+'");','1000');
           return true;
   };
@@ -102,5 +104,7 @@ var display = (function () {
     showPath: showPath,
     renderPlaceName : renderPlaceName,
     dateTime: dateTime,
+    positions: positions,
+    pathIndex: pathIndex
   }
 })();

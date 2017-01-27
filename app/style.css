@@ -69,6 +69,10 @@ button {
 p.iss-is-above {
   color: lime;
 }
+
+.active {
+  border: 2px solid orange;
+}
 /*
 Titles:
 font-family: 'Bungee Shade', cursive;
