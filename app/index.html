@@ -3,18 +3,23 @@
   <head>
     <meta charset="utf-8">
     <title>*** SpaceCake ISS Tracker ***</title>
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Shade|Orbitron|Russo+One" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./style.css">
-    <script src="http://www.webglearth.com/v2/api.js"></script>
+    <script src="https://www.webglearth.com/v2/api.js"></script>
   </head>
   <body>
     <main id="earth_div">
-      <nav id="buttons">
-        <h1>ISS Spotter</h1>
+      <nav id="topleftconsole">
+        <h1>ISS Tracker</h1>
         <p>A team SpaceCake project</p>
         <button id="position">Update position</button>
         <button id="path">Show path</button>
         <p class="iss_is_above">The ISS is currently above...<p>
       </nav>
+      <div id="clock">
+        <p class="date_time"></p>
+        <script type="text/javascript">window.onload = display.dateTime('date_time');</script>
+      </div>
     </main>
     <!-- *** Google Reverse Geocoding API requests ***
     <script src="./reverse_geocoding.js"></script>
