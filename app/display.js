@@ -11,7 +11,8 @@ var display = (function () {
           tilting: true,
           zooming: true,
           center: [46.8011, 8.2266],
-          zoom: 2
+          zoom: 100,
+          maxAltitude: 30000000, // meters
   };
 
   var earth = new WE.map('earth_div', options);
