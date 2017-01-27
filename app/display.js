@@ -28,7 +28,7 @@ var display = (function () {
     tms: true,
   }).addTo(earth);
 
-  // Add marker
+  // Instantiate marker
   var ISSMarker = WE.marker(
     [0, 0],
     "./assets/satellite-station.svg",
@@ -36,13 +36,17 @@ var display = (function () {
     .addTo(earth);
 
   var setMarkerPosition = function (lat, lon) {
-    var arrOfPosition = [lat, lon];
+    var arrOfPosition = [lat, lon]; // Because built-in method needs an array.
     ISSMarker.setLatLng(arrOfPosition);
-    earth.setView(arrOfPosition);
+    // earth.setView(arrOfPosition);
     ISSMarker.bindPopup('<b>ISS marker position.</b><br>latitude: '+ arrOfPosition[0] +
      ', longitude: ' +   arrOfPosition[1]);
     positions.push(arrOfPosition);
   };
+
+  var getMarkerPosition = function() {
+
+  }
 
   var showPath = function () {
     if (positions.length > 1) {
