@@ -4,7 +4,7 @@
 var placeName = "";
 
 function reqPlaceName(lat, lon) {
-  ajax.open('GET', 'http://nominatim.openstreetmap.org/reverse?format=json&lat=' + lat + '&lon=' + lon, '', setPlaceName);
+  ajax.open('GET', 'https://nominatim.openstreetmap.org/reverse?format=json&lat=' + lat + '&lon=' + lon, '', setPlaceName);
 };
 
 function setPlaceName (data) {
